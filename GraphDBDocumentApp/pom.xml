@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.asanasoft</groupId>
-    <artifactId>graphdb-provider-bitsy</artifactId>
+    <artifactId>GraphDBDocumentApp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -66,42 +66,44 @@
     </build>
 
     <dependencies>
-        <!-- Bitsy -->
-        <dependency>
-            <groupId>com.lambdazen.bitsy</groupId>
-            <artifactId>bitsy</artifactId>
-            <version>3.6.2</version>
-        </dependency>
-
-        <!-- Core -->
+        <!-- Graph DB Document -->
         <dependency>
             <groupId>com.asanasoft</groupId>
             <artifactId>graphdb-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.asanasoft</groupId>
+            <artifactId>graphdb-provider-bitsy</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.asanasoft</groupId>
+            <artifactId>graphdb-provider-janus</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
-        <!-- Kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit5</artifactId>
             <version>1.9.21</version>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-engine</artifactId>-->
-<!--            <version>5.10.0</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>1.9.21</version>
         </dependency>
         <dependency>
-            <groupId>com.lambdazen.bitsy</groupId>
-            <artifactId>bitsy</artifactId>
-            <version>3.6.2</version>
+            <groupId>com.asanasoft</groupId>
+            <artifactId>graphdb-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

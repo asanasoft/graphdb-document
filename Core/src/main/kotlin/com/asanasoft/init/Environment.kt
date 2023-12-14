@@ -9,7 +9,7 @@ object Environment : PropertiesLoader() {
     private var initialized : Boolean = false
     val SYSTEM_FILENAME = "system.properties"
 
-    fun init() {
+    init {
         logger.info("Initializing Environment...")
 
         //See if the "system" properties has been set...

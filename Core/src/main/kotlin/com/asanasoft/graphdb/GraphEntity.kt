@@ -1,10 +1,10 @@
 package com.asanasoft.graphdb
 
+import com.asanasoft.graphdb.init.Environment
 import com.asanasoft.util.*
 import com.asanasoft.util.DBConstants.INTERNAL_CLASS
 import com.asanasoft.util.DBConstants.INTERNAL_ID
 import com.asanasoft.util.DBConstants.USE_KEY
-import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import org.apache.tinkerpop.gremlin.structure.Vertex
 import org.apache.tinkerpop.shaded.jackson.annotation.ObjectIdGenerators.UUIDGenerator
@@ -25,7 +25,7 @@ open class GraphEntity : MutableMap<String, Any?> {
 
     private var delegate: MutableMap<String, Any?> = mutableMapOf()
 
-    protected val graphDBService: GraphDBService?
+    protected var graphDBService: GraphDBService?
         /**
          * I never make my methods private. Principles...
          */
@@ -82,6 +82,14 @@ open class GraphEntity : MutableMap<String, Any?> {
         delegate[INTERNAL_CLASS]    = clazz!!
         delegate[USE_KEY]           = _key!!
         delegate[INTERNAL_ID]       = _id!!
+    }
+
+    init {
+        val defaultProvider = Environment.getProperty("defaultGraphDBProvider")!!
+        val graphDbProvider = Environment.getProperty(defaultProvider)
+        val graphDbService = GraphDBServiceLoader.provider(graphDbProvider!!)
+
+        this.graphDBService = graphDbService.create()
     }
 
     protected open fun setType(className: String? = DEFAULT_CLASS_NAME, keyField: String? = DEFAULT_KEY, id: String?) {
@@ -178,8 +186,8 @@ open class GraphEntity : MutableMap<String, Any?> {
      * Let's make this class behave like an Object DB by giving the objects
      * CRUD features...
      *
-     * These methods are in the react pattern, since AbstractGraphDBService is reactive...
      */
+
     /**
      * Fetch the previously persisted version of this object or a newly created one.
      */

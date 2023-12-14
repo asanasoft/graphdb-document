@@ -23,10 +23,7 @@ object GraphDBServiceLoader {
 
         val services: List<GraphDBServiceProvider> = providers()
         for (service in services) {
-            var tokenizer : StringTokenizer = StringTokenizer(service.javaClass.name, ".")
-            var serviceName : String = tokenizer.toList().last() as String
-
-            if (service.javaClass.name.equals(serviceName, ignoreCase = true)) {
+            if (service.javaClass.name.equals(name, ignoreCase = true)) {
                 result = service
             }
         }

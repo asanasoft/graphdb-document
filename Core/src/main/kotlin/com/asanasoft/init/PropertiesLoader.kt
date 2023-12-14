@@ -124,7 +124,7 @@ open abstract class PropertiesLoader {
          * ...now load environment-specific properties.
          * Again, these can override the system.properties...
          */
-        if (getProperties(DEFAULT_PROPERTIES)!!.containsKey("ENV")) {
+        if (getProperties(DEFAULT_PROPERTIES, true)!!.containsKey("ENV")) {
             fileName = baseDir + getProperties(DEFAULT_PROPERTIES)!!.getProperty("ENV") + "_" + propertiesFileName
 
             /**
